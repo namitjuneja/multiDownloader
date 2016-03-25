@@ -17,6 +17,10 @@ for (i=0; i<s.length; i++)
 	att.value = s[i].href;                          
 	box.setAttributeNode(att); 
 
+	var att = document.createAttribute("data-filename");    
+	att.value = s[i].innerText;                          
+	box.setAttributeNode(att);
+
 	console.log(s[i].parentNode.insertBefore(box, s[i]))
 }
 
@@ -27,13 +31,17 @@ for (i=0; i<s.length; i++)
 var script = document.createElement("script");
 
 var script_content = `var checkedBoxes = document.querySelectorAll('input[name=downloadSelect]:checked');
-var links = [];
+var links = {};
 for (i = 0; i<checkedBoxes.length; i++)
 {
-	links.push(checkedBoxes[i].value);
+	// links.push(checkedBoxes[i].value);
+	links[checkedBoxes[i].getAttribute("data-filename")] = checkedBoxes[i].value;
 }
 
-window.postMessage({links: links}, '*');
+subject_name = document.getElementsByTagName("table")[1].getElementsByTagName("td")[9].innerText;
+teacher_name = document.getElementsByTagName("table")[1].getElementsByTagName("td")[11].innerText;
+
+window.postMessage({links: links, subject: subject_name, teacher: teacher_name}, '*');
 `
 
 script.textContent = "function multiDownload_click(){\n" + script_content + "}";
@@ -86,7 +94,7 @@ window.addEventListener('message', function(event) {
   }
 
   chrome.runtime.sendMessage(message);
-  console.log(message.links);
+  // console.log(message.links);
 });
 
 
