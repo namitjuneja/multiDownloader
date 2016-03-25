@@ -21,7 +21,7 @@ for (i=0; i<s.length; i++)
 	att.value = s[i].innerText;                          
 	box.setAttributeNode(att);
 
-	console.log(s[i].parentNode.insertBefore(box, s[i]))
+	s[i].parentNode.insertBefore(box, s[i])
 }
 
 
@@ -36,11 +36,11 @@ document.getElementById("madeby").style.visibility = "visible";
 
 
 var checkedBoxes = document.querySelectorAll('input[name=downloadSelect]:checked');
-var links = {};
+var links = [];
 for (i = 0; i<checkedBoxes.length; i++)
 {
-	// links.push(checkedBoxes[i].value);
-	links[checkedBoxes[i].getAttribute("data-filename")] = checkedBoxes[i].value;	 
+	links.push(checkedBoxes[i].value);
+	// links[checkedBoxes[i].getAttribute("data-filename")] = checkedBoxes[i].value;	 
 }
 
 subject_name = document.getElementsByTagName("table")[1].getElementsByTagName("td")[9].innerText;
@@ -116,6 +116,7 @@ window.addEventListener('message', function(event) {
   // console.log(message.links);
 });
 
+console.log("Made with ♥ by Namit Juneja");
 
 
 

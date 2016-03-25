@@ -7,14 +7,14 @@ chrome.runtime.onMessage.addListener
 	  			subject_name = request.subject;
 	  			teacher_name = request.teacher;
 
-	  			// for (i=0; i<links.length; i++)
-	  			for (filename in links)
+	  			for (i=0; i<links.length; i++)
+	  			// for (filename in links)
 	  			{
-	  				console.log(filename);
+	  				console.log(links[i].replace(/^.*[\\\/]/, ''));
 	  				chrome.downloads.download
 	  				({
-	  					url: links[filename], 
-	  					filename: subject_name + "/" + teacher_name + "/" + filename
+	  					url: links[i], 
+	  					filename: "VIT Course Material"+ "/" + subject_name + "/" + teacher_name + "/" + links[i].replace(/^.*[\\\/]/, '')
 	  				});
 	  			}
 	  }
