@@ -35,7 +35,7 @@ var links = {};
 for (i = 0; i<checkedBoxes.length; i++)
 {
 	// links.push(checkedBoxes[i].value);
-	links[checkedBoxes[i].getAttribute("data-filename")] = checkedBoxes[i].value;
+	links[checkedBoxes[i].getAttribute("data-filename")] = checkedBoxes[i].value;	 
 }
 
 subject_name = document.getElementsByTagName("table")[1].getElementsByTagName("td")[9].innerText;
