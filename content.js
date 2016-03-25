@@ -30,7 +30,12 @@ for (i=0; i<s.length; i++)
 //injecting script to addon click event for the multi download button
 var script = document.createElement("script");
 
-var script_content = `var checkedBoxes = document.querySelectorAll('input[name=downloadSelect]:checked');
+var script_content = `
+
+document.getElementById("madeby").style.visibility = "visible"; 
+
+
+var checkedBoxes = document.querySelectorAll('input[name=downloadSelect]:checked');
 var links = {};
 for (i = 0; i<checkedBoxes.length; i++)
 {
@@ -75,7 +80,21 @@ var att = document.createAttribute("onclick");
 att.value = "multiDownload_click()";                          
 button.setAttributeNode(att); 
 
-console.log(document.getElementsByName("coursepage")[0].appendChild(button));
+
+var madeby = document.createElement("p");
+
+madeby.style.visibility = "hidden";
+
+var att = document.createAttribute("id");       
+att.value = "madeby";                          
+madeby.setAttributeNode(att); 
+
+madeby.innerHTML = "Made with ♥ by <a target='_blank' href='http://namitjuneja.com'>Namit</a>&nbsp;&nbsp;😁";
+
+// <p style="float: right;">Made with ♥ by <a href="http://namitjuneja.com">Namit</a></p>
+
+document.getElementsByName("coursepage")[0].parentNode.appendChild(madeby)
+document.getElementsByName("coursepage")[0].appendChild(button)
 
 
 
