@@ -1,4 +1,4 @@
-# [multiDwonloader](http://namitjuneja.com/multiDownloader "visit the website")
+# [multiDownloader](http://namitjuneja.com/multiDownloader "visit the website")
 Chrome extension to easily download multiple files from VIT academics course page.
 
 [Download chrome extension](http://namitjuneja.com/multiDownloader/multiDownloader.crx "multiDownloader.crx")
