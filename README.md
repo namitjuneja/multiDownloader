@@ -8,21 +8,18 @@ Chrome extension to easily download multiple files from VIT academics course pag
 * Then click on the multiDownload button at the bottom of the page
 * All files will be stored in a folder named "VIT Course Material" in your downloads folder
 
-![How to use](http://namitjuneja.com/multiDownloader/images/usage.gif){ 
-  width:  75%%; 
-  height: 75%;
-  display: block;
-  float: center;
-}
+
+<img src="http://namitjuneja.com/multiDownloader/images/usage.gif" align="center" height="75%" width="75%" >
+
+
+
+
+
 
 
 ## How to install?
 * Launch chrome and type `chrome://extensions` and press enter
 * Then drag the downloaded file into the browser window.
 
-![How to install](http://namitjuneja.com/multiDownloader/images/install.gif){ 
-  width:  75%%; 
-  height: 75%;
-  display: block;
-  float: center;
-}
+
+<img src="http://namitjuneja.com/multiDownloader/images/install.gif" align="center" height="75%" width="75%" >
