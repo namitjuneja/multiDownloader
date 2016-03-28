@@ -15,6 +15,10 @@
     "scripts": ["background.js"]
   },
   "permissions": [
-            "downloads", "*://academics.vit.ac.in/*"
-          ]
+            "downloads", "*://academics.vit.ac.in/*", "storage", "<all_urls>"
+          ],
+
+  "browser_action": {
+     "default_popup": "popup.html"
+    }
 }
