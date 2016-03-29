@@ -7,23 +7,23 @@ chrome.storage.sync.get(['username', 'password'], function(results)
 		var username_saved = results.username;
 		var password_saved = results.password;
 
-		// document.getElementsByName("userId")[0].value = username_saved;
-		// document.getElementsByName("password")[0].value = password_saved;
+		// // document.getElementsByName("userId")[0].value = username_saved;
+		// // document.getElementsByName("password")[0].value = password_saved;
 
-		// var myKeyVals = { A1984 : 1, A9873 : 5, A1674 : 2, A8724 : 1, A3574 : 3, A1165 : 5 }
+		// // var myKeyVals = { A1984 : 1, A9873 : 5, A1674 : 2, A8724 : 1, A3574 : 3, A1165 : 5 }
 
-		var load = {'userId': username_saved,'serviceName':"ProntoAuthentication",'password': password_saved ,'Submit22':"Login"};
+		// var load = {'userId': username_saved,'serviceName':"ProntoAuthentication",'password': password_saved ,'Submit22':"Login"};
 
-		chrome.extension.getBackgroundPage().console.log(load);
+		// chrome.extension.getBackgroundPage().console.log(load);
 
 
-		var saveData = $.ajax({
-		      type: 'POST',
-		      url: "http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://phc.prontonetworks.com/",
-		      data: load,
-		      dataType: "text",
-		      success: function(resultData) { chrome.extension.getBackgroundPage().console.log(resultData); }
-		});
+		// var saveData = $.ajax({
+		//       type: 'POST',
+		//       url: "http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://phc.prontonetworks.com/",
+		//       data: load,
+		//       dataType: "text",
+		//       success: function(resultData) { chrome.extension.getBackgroundPage().console.log(resultData); }
+		// });
 
 		// saveData.error(function() { alert("Something went wrong"); });
 
@@ -61,6 +61,10 @@ document.addEventListener('DOMContentLoaded', function()
 		         document.getElementById("passwd").setAttribute("type", 'password');
 		         document.getElementById("userid_label").style.display = "block";
 		         document.getElementById("passwd_label").style.display = "block";
+
+		         // document.getElementById("userid_label").style.text-align = "left";
+		         // document.getElementById("passwd_label").style.text-align = "left";
+
 		         document.getElementById("save").style.display = "inline-block";
 		         // document.getElementById("logout").style.display = "inline-block";
 		         
@@ -76,6 +80,40 @@ document.addEventListener('DOMContentLoaded', function()
 		               url: "http://phc.prontonetworks.com/cgi-bin/authlogout",
 		               dataType: "text",
 		               success: function(resultData) { chrome.extension.getBackgroundPage().console.log(resultData); }
+		         });
+		 });
+
+		 var login = document.getElementById('login');
+		 login.addEventListener('click', function() 
+		 {
+		         chrome.storage.sync.get(['username', 'password'], function(results)
+		         	{
+		         		var username_saved = results.username;
+		         		var password_saved = results.password;
+
+		         		// document.getElementsByName("userId")[0].value = username_saved;
+		         		// document.getElementsByName("password")[0].value = password_saved;
+
+		         		// var myKeyVals = { A1984 : 1, A9873 : 5, A1674 : 2, A8724 : 1, A3574 : 3, A1165 : 5 }
+
+		         		var load = {'userId': username_saved,'serviceName':"ProntoAuthentication",'password': password_saved ,'Submit22':"Login"};
+
+		         		chrome.extension.getBackgroundPage().console.log(load);
+
+
+		         		var saveData = $.ajax({
+		         		      type: 'POST',
+		         		      url: "http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://phc.prontonetworks.com/",
+		         		      data: load,
+		         		      dataType: "text",
+		         		      success: function(resultData) { chrome.extension.getBackgroundPage().console.log(resultData); }
+		         		});
+
+		         		// saveData.error(function() { alert("Something went wrong"); });
+
+		         		
+
+		         
 		         });
 		 });
 	});

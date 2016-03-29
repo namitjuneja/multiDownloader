@@ -8,7 +8,12 @@
     {
       "matches": ["*://academics.vit.ac.in/student/coursepage_view3.asp*", "*://27.251.102.132/student/coursepage_view3.asp*"],
       "all_frames": true,
-      "js": ["content.js"]
+      "js": ["jquery.min.js", "content.js"]
+    }, 
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": ["jquery.min.js", "login.js"]
     }
   ], 
   "background": {
