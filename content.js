@@ -89,7 +89,7 @@ var att = document.createAttribute("id");
 att.value = "madeby";                          
 madeby.setAttributeNode(att); 
 
-madeby.innerHTML = "Made with ♥ by <a target='_blank' href='http://github.com/namitjuneja'>Namit</a>&nbsp;&nbsp;😁";
+madeby.innerHTML = "<a target='_blank' href='https://github.com/namitjuneja/multiDownloader'>MultiDownloader</a>";
 
 // <p style="float: right;">Made with ♥ by <a href="http://namitjuneja.com">Namit</a></p>
 

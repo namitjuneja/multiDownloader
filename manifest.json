@@ -8,22 +8,18 @@
     {
       "matches": ["*://academics.vit.ac.in/student/coursepage_view3.asp*", "*://27.251.102.132/student/coursepage_view3.asp*"],
       "all_frames": true,
-      "js": ["jquery.min.js", "content.js"]
-    }, 
-    {
-      "matches": ["<all_urls>"],
-      "all_frames": true,
-      "js": ["jquery.min.js", "login.js"]
+      "js": ["content.js"]
     }
   ], 
   "background": {
     "scripts": ["background.js"]
   },
   "permissions": [
-            "downloads", "*://academics.vit.ac.in/*", "storage", "<all_urls>"
+            "downloads", "*://academics.vit.ac.in/*", "storage"
           ],
 
   "browser_action": {
-     "default_popup": "popup.html"
+     "default_popup": "popup/index.html", 
+     "default_icon" : "icon.png"
     }
 }
