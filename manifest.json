@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "multiDownloader",
-  "version": "0.1", 
+  "version": "0.3", 
    "author": "Namit Juneja",
-   "description": "Allows students to download multiple files at the same time from VIT University's course page",
+   "description": "Allows VIT students to quickly download course material of the course page and organize it.",
   "content_scripts": [
     {
       "matches": ["*://academics.vit.ac.in/student/coursepage_view3.asp*", "*://27.251.102.132/student/coursepage_view3.asp*"],
