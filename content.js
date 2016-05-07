@@ -24,15 +24,12 @@ for (i=0; i<s.length; i++)
 	s[i].parentNode.insertBefore(box, s[i])
 }
 
-
-
-
 //injecting script to addon click event for the multi download button
 var script = document.createElement("script");
 
 var script_content = `
 
-document.getElementById("madeby").style.visibility = "visible"; 
+//document.getElementById("madeby").style.visibility = "visible"; 
 
 
 var checkedBoxes = document.querySelectorAll('input[name=downloadSelect]:checked');
@@ -81,19 +78,18 @@ att.value = "multiDownload_click()";
 button.setAttributeNode(att); 
 
 
-var madeby = document.createElement("p");
+// var madeby = document.createElement("p");
 
-madeby.style.visibility = "hidden";
+// madeby.style.visibility = "hidden";
 
-var att = document.createAttribute("id");       
-att.value = "madeby";                          
-madeby.setAttributeNode(att); 
+// var att = document.createAttribute("id");       
+// att.value = "madeby";                          
+// madeby.setAttributeNode(att); 
 
-madeby.innerHTML = "<a target='_blank' href='https://github.com/namitjuneja/multiDownloader'>MultiDownloader</a>";
+// madeby.innerHTML = "<a target='_blank' href='https://github.com/namitjuneja/multiDownloader'>MultiDownloader</a>";
 
-// <p style="float: right;">Made with ♥ by <a href="http://namitjuneja.com">Namit</a></p>
 
-document.getElementsByName("coursepage")[0].parentNode.appendChild(madeby)
+// document.getElementsByName("coursepage")[0].parentNode.appendChild(madeby)
 document.getElementsByName("coursepage")[0].appendChild(button)
 
 
