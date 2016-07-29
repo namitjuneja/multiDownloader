@@ -1,26 +1,36 @@
 {
-  "manifest_version": 2,
-  "name": "multiDownloader",
-  "version": "0.3", 
-   "author": "Namit Juneja",
-   "description": "Allows VIT students to quickly download course material of the course page and organize it.",
-  "content_scripts": [
-    {
-      "matches": ["*://academics.vit.ac.in/student/coursepage_view3.asp*", "*://27.251.102.132/student/coursepage_view3.asp*"],
-      "all_frames": true,
-      "js": ["content.js"]
-    }
-  ], 
-  "background": {
-    "scripts": ["background.js"]
-  },
-  "permissions": [
-            "downloads", "*://academics.vit.ac.in/*", "storage"
-          ],
+    "name": "multiDownloader",
+    "description": "Download and organize stuff quickly off VIT's course page",
+    "manifest_version": 2,
+    "version": "2.0.2",
+    "author": "Namit Juneja",
+    "content_scripts": [{
+        "matches": ["https://vtop.vit.ac.in/student/coursepage_plan_display.asp"],
+        "all_frames": true,
+        "js": ["content.js"]
+    }, {
+        "matches": ["*://vtop.vit.ac.in/student/home.asp*", "*://27.251.102.132/student/home.asp*"],
+        "js": ["content_key.js"]
+    }],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": [
+        "downloads", "*://vtop.vit.ac.in/*", "storage", "tabs"
+    ],
 
-  "browser_action": {
-     "default_popup": "popup/index.html", 
-     "default_icon" : "icon.png"
-    }, 
-  "icons": { "16": "icon.png", "48": "icon.png", "128": "icon.png" }
+    "browser_action": {
+        "default_popup": "popup/index.html",
+        "default_icon": "icon.png"
+    },
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "options_ui": {
+        "page": "pages/options.html",
+        "chrome_style": false
+    },
+    "options_page": "pages/options.html"
 }
