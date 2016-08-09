@@ -23,7 +23,7 @@
 
             <h6 class="content-head content-head-ribbon" style="text-align: right; margin-top: 0px"><a style="color: #cdb501; text-decoration: none; " href="http://github.com/namitjuneja"> by Namit </a></h6>
 
-            <div style="text-align: right;">
+            <div style="text-align: right; display:block;" id="help">
                 <div style="float: center;">
                     <div style=" font-size: 13px;     padding-top: 5px;">Open the course page.</div>
                     <div style=" font-size: 13px;     padding-top: 5px;">Check all the files you want to download.</div>
@@ -32,8 +32,27 @@
                 </div>
             </div>
 
+            <div style="text-align: right; display:none;" id="shortcuts">
+                <div style="float: center;">
+                    <div style=" font-size: 13px;     padding-top: 5px;"> <b> Shift + A :</b> Select all links </div>
+                    <div style=" font-size: 13px;     padding-top: 5px;"> <b> Shift + M :</b> Download selected links </div>
+                    <div style=" font-size: 13px;     padding-top: 5px;"> <b> Ctrl + Click :</b> Select multiple links </div>
+                </div>
+            </div>
 
-            <h4 id="settings_button" style=" cursor: pointer; cursor: hand;"><button style="" id="settings_settings"> options </button>  |  <a style="color: ; text-decoration: none; " href="/pages/help.html" id="settings_help"> help </a></h4>
+            <style>
+            #help{
+              display:block;
+            }
+            #shortcuts{
+              display:none;
+            }
+            </style>
+
+            <!-- <h4 id="settings_button" style=" cursor: pointer; cursor: hand;"><button style="" id="settings_settings"> shortcuts </button>  |  <a style="color: ; text-decoration: none; " href="/pages/help.html" id="settings_help"> options </a></h4> -->
+
+            <h4 id="settings_button" style=" cursor: pointer; cursor: hand;"><button style="width: 80px;" id="settings_settings"> shortcuts </button>  <a style="color: ; text-decoration: none;" href="https://vtop.vit.ac.in/student/stud_login.asp" > | </a> <button style="    width: 70px;;" id="settings_help"> options </button></h4>
+
             <br>
             <style>
                 button {
@@ -44,7 +63,7 @@
                 }
                 #settings_button {
                     margin-top: 10px;
-                    float: right;
+                    float: right;1
                     margin-right: 27px;
                     font-style: normal;
                     color: #888;
@@ -54,7 +73,7 @@
                     margin-right: 0px;
                     margin-bottom: 0px;
                     font-size: 15px;
-                    padding: 0px 10px 0px 10px
+                    /*padding: 0px 10px 0px 10px*/
                 }
                 #settings_settings {
                     color: #888;
@@ -64,6 +83,9 @@
                     color: #888;
                     text-decoration: none;
                     font-weight: bold;
+                }
+                #settings_settings:focus {
+                    outline: 0;
                 }
                 #settings_help {
                     color: #cdb501;

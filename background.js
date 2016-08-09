@@ -86,6 +86,7 @@ chrome.runtime.onMessage.addListener(
         subject_name = request.subject;
         teacher_name = request.teacher;
         links_hash = request.links_hash;
+        console.log(links, links_hash);1
 
         var download_error = false; //download error indicator
         var retry_count = 3; //number of times it retry's download incase the server returns error
@@ -150,6 +151,7 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+// self explanatory
 var getLocation = function(href) {
     var l = document.createElement("a");
     l.href = href;
@@ -159,30 +161,24 @@ var getLocation = function(href) {
 
 chrome.downloads.onDeterminingFilename.addListener(function(item, suggest) {
     if (getLocation(item.url).hostname == "vtop.vit.ac.in" || getLocation(item.url).hostname == "27.251.102.132") {
-        // console.log(re.exec(item.filename)[1]);
         if (re.exec(item.filename)[1] != "asp") {
-            // console.log("on file determine if not asp", item.filename);
-            exam = links_hash[item.url][0];
-            id = links_hash[item.url][1];
 
+            id = links_hash[item.url];
             var index_preference_default = true;
-            var exam_preference_default = false;
-
             var index_preference = localStorage["index_preference"];
-            var exam_preference = localStorage["exam_preference"];
 
             //checking undefined
-            if ((index_preference == undefined && exam_preference == undefined) && typeof(index_preference) !== "boolean" && typeof(exam_preference) !== "boolean") {
+            if ((index_preference == undefined) && typeof(index_preference) !== "boolean") 
+            {
                 index_preference = index_preference_default;
-                exam_preference = exam_preference_default;
-                // console.warn("Failed to load user filename preferences");
-                // console.warn("Using default preferences");
-            } else {
+            } 
+            else 
+            {
                 index_preference = JSON.parse(index_preference);
-                exam_preference = JSON.parse(exam_preference);
             }
 
-
+            console.log(index_preference, id);
+            console
 
             if (!id) {
                 id = "";
@@ -190,50 +186,33 @@ chrome.downloads.onDeterminingFilename.addListener(function(item, suggest) {
                 id = id + "_";
             }
 
-            if (!exam) {
-                exam = "";
-            }
-
-            if (links_hash[item.url][0] == "") {
+            //differentiating between course material and other tables
+            if (links_hash[item.url] == "") {
                 var cleaned_filename = item.filename.split("_").slice(2).join("_");;
-                exam = "Others";
+                console.log("Others");
             } else {
                 var cleaned_filename = item.filename.split("_").slice(4).join("_");
             }
 
-            if (index_preference && exam_preference) {
-                suggest({
-                    conflictAction: 'overwrite',
-                    filename: "VIT Course Material" + "/" + subject_name + "/" + teacher_name + "/" + exam + "/" + id + cleaned_filename
-                });
-                // console.log("index_preference", index_preference, " | exam_preference", exam_preference);
-            } else if (!index_preference && exam_preference) {
-                suggest({
-                    conflictAction: 'overwrite',
-                    filename: "VIT Course Material" + "/" + subject_name + "/" + teacher_name + "/" + exam + "/" + cleaned_filename
-                });
-                // console.log("index_preference", index_preference, " | exam_preference", exam_preference);
-            } else if (index_preference && !exam_preference) {
+
+            if (index_preference) { 
                 suggest({
                     conflictAction: 'overwrite',
                     filename: "VIT Course Material" + "/" + subject_name + "/" + teacher_name + "/" + id + cleaned_filename
                 });
-                // console.log("index_preference", index_preference, " | exam_preference", exam_preference);
-            } else if (!index_preference && !exam_preference) {
+            } else if (!index_preference) {   
                 suggest({
                     conflictAction: 'overwrite',
                     filename: "VIT Course Material" + "/" + subject_name + "/" + teacher_name + "/" + cleaned_filename
                 });
-                // console.log("index_preference", index_preference, " | exam_preference", exam_preference);
-            }
+            } 
 
-            // suggest({filename: "VIT Course Material"+ "/" + subject_name + "/" + teacher_name + "/" + id + "_" + cleaned_filename});
-            // console.log(getLocation(item.url).hostname);
-        } else {
-            // console.log("on file determine IF asp", item.filename);
+        } else //if the file has an asp extension (user session has expired)
+        {
             downloadId = item.id;
             chrome.promise.downloads.cancel(downloadId)
-                .then(function(downloadId) {
+                .then(function(downloadId) 
+                {
                     console.log("Callback: Session timed out. Download cancelled.");
                 });
         }
