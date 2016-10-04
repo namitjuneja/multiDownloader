@@ -186,9 +186,11 @@ chrome.downloads.onDeterminingFilename.addListener(function(item, suggest) {
                 id = id + "_";
             }
 
+            console.log(links_hash);
             //differentiating between course material and other tables
-            if (links_hash[item.url] == "") {
-                var cleaned_filename = item.filename.split("_").slice(2).join("_");;
+            if (links_hash[item.url] == null) {
+                // var cleaned_filename = item.filename.split("_").slice(2).join("_");;
+                var cleaned_filename = "Others/" +  item.filename;
                 console.log("Others");
             } else {
                 var cleaned_filename = item.filename.split("_").slice(4).join("_");
