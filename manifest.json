@@ -2,7 +2,7 @@
     "name": "multiDownloader",
     "description": "Download and organize stuff quickly off VIT's course page",
     "manifest_version": 2,
-    "version": "2.1.1",
+    "version": "2.2.1",
     "author": "Namit Juneja",
     "content_scripts": [
     {

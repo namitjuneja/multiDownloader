@@ -1,12 +1,11 @@
-// adding checkbox next to all the links
+// identifying the table containing the course material
 container_table = document.getElementsByTagName("table")[0]; //the outer most table holding the rest of the tables
 content_tables = container_table.getElementsByTagName("table"); //the 4/5 tables for assignments. course page etc inside the container table
 course_material_table = content_tables[content_tables.length - 1]; //last table in the container table which is the course page table
  
  
-//injecting html content in the course_material_table
+//injecting html checkboxes in the course_material_table
 s = course_material_table.getElementsByTagName("a");
-//all rows iterator-1: adds checkboxes and row onclick events
 for (i = 0; i < s.length; i++) {
     var box = document.createElement("input"); //create the input tag       
  
@@ -473,7 +472,8 @@ function checkUncheck( el ) {
     el.setAttribute("checked_datainternal", check_value);
 }
 
-new magicSelection( content_tables[content_tables.length - 1].querySelectorAll('tr:not(.section_header_top)'), 
+// new magicSelection( content_tables[content_tables.length - 1].querySelectorAll('tr:not(.section_header_top)'), 
+new magicSelection( items,
 {
     onSelection : function( el ) { checkUncheck( el ); },
     onClick : function( el ) { el.className = el.querySelector( 'input[type="checkbox"]' ).checked ? 'selected' : ''; }
